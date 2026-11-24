@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hetzner Cloud"
+  short_description: "Provision and operate Hetzner Cloud VPSs"
+  default_prompt: "Use $hetzner-cloud to plan a VPS with Docker and a private browser for manual sign-in."

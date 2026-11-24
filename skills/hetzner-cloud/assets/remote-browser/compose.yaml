@@ -1,0 +1,24 @@
+services:
+  chromium:
+    image: ${CHROMIUM_IMAGE:-lscr.io/linuxserver/chromium:latest}
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: Etc/UTC
+      CUSTOM_USER: ${BROWSER_USER:-operator}
+      FILE__PASSWORD: /run/secrets/browser_password
+    ports:
+      - "127.0.0.1:3001:3001"
+    volumes:
+      - chromium-profile:/config
+    secrets:
+      - browser_password
+    shm_size: "1gb"
+    restart: unless-stopped
+
+secrets:
+  browser_password:
+    file: ./browser-password
+
+volumes:
+  chromium-profile:
